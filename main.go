@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	/*
 		how to run go in console
@@ -16,8 +14,8 @@ func main() {
 	*/
 
 	// Assign value
-	card := newCard()
-	fmt.Println(card)
+	// card := newCard()
+	// fmt.Println(card)
 
 	// Loop with slice
 	// cards := []string{"Ace of Diamonds", newCard()}
@@ -27,7 +25,7 @@ func main() {
 	// }
 
 	// Deck data type and receiver
-	cards := newDeck()
+	// cards := newDeck()
 	// cards.print()
 
 	// Assign value to multiple variables
@@ -41,7 +39,13 @@ func main() {
 		WriteFile func is []byte, here is the diagram
 		deck -> []string -> string -> []byte
 	*/
-	fmt.Println(cards.toStringYo())
+	// cards.saveToFile("my_cards")
+
+	/*
+		It will load file from local storage and print it
+	*/
+	cards := newDeckFromFile("my_cards")
+	cards.print()
 }
 
 func newCard() string {

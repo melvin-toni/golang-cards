@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -38,4 +40,21 @@ func deal(d dick, handSize int) (dick, dick) {
 
 func (d dick) toStringYo() string {
 	return strings.Join([]string(d), ",")
+}
+
+func (d dick) saveToFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.toStringYo()), 0666)
+}
+
+func newDeckFromFile(filename string) dick {
+	bs, err := ioutil.ReadFile(filename)
+
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
+
+	s := strings.Split(string(bs), ",")
+
+	return dick(s)
 }
