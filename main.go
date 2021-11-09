@@ -44,7 +44,14 @@ func main() {
 	/*
 		It will load file from local storage and print it
 	*/
-	cards := newDeckFromFile("my_cards")
+	// cards := newDeckFromFile("my_cards")
+	// cards.print()
+
+	/*
+		It will shuffle the card
+	*/
+	cards := newDeck()
+	cards.shuffle()
 	cards.print()
 }
 
